@@ -12,9 +12,9 @@ func main() {
 		print(err)
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	artistsbody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		print(err)
 	}
-	fmt.Print(string(body))
+	fmt.Print(string(artistsbody))
 }
