@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <!-- <link rel="stylesheet" href="/Users/ashamohamed/Documents/groupietracker/assets/styles.css" /> -->
+        <link rel="stylesheet" href="/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/styles.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>INDEX</title>
     </head>
@@ -11,17 +11,25 @@
         <main>
             <h1>GROUPIE TRACKER</h1>
                     {{range .}}
-                 <img src="{{.Image}}" alt="Image of Artists"> 
-                 <h3>{{.Name}}</h3>
-                 <p>MEMBERS: {{range .Members}}</p>
-                <ul>{{.}}</ul>{{end}}
-                <p>CREATION DATE: {{.CreationDate}}</p>
-                <p>FIRST ALBUM: {{.FirstAlbum}}</p>
-                <a href="/loc">SHOW LOCATIONS</a><br>
-                <br>
-             {{end}}
-             <br>
-             <br>
+                <div class="indexcard">
+                    <section>
+                    <img src="{{.Image}}" alt="Image of Artists"> 
+                    <h3 class="ind-name">{{.Name}}</h3>
+                    </section>
+                    <section>
+                        <p>MEMBERS: {{range .Members}}</p>
+                        <ul>{{.}}</ul>{{end}}
+                        <p>CREATION DATE: {{.CreationDate}}</p>
+                        <p>FIRST ALBUM: {{.FirstAlbum}}</p>
+                        <a href="/loc">SHOW LOCATIONS</a><br>
+                        <br>
+                     {{end}}
+                     <br>
+                     <br>
+                    </section>
+                </div>
+               
+                 
              <p><a href="/index">home</a></p>
         </main>
     </body>

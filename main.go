@@ -37,18 +37,13 @@ type date struct {
 	} `json:"index"`
 }
 
-type relation struct {
-	Loc     []location
-	Artists []artist
-	Date    []date
-}
-
 // put structs into variables for unmarshelling.
 // Unmarshalling takes data from the struct and puts it into the variable
 var artists artist
 var loc location
 var datesvar date
-var relvar relation
+
+// var alldatavar alldata
 var tpl *template.Template
 
 func init() {
@@ -68,7 +63,7 @@ func main() {
 
 	err2 := json.Unmarshal(artistsbody, &artists) //interface MUST pass unmarshal a pointer!
 	if err2 != nil {
-		log.Fatalln("error unmarhsalling artist", err2)
+		log.Fatalln("error unmarshalling artist", err2)
 	}
 
 	//2. location url get, put json into variable and unmarshall
@@ -102,31 +97,16 @@ func main() {
 
 	err4 := json.Unmarshal(datesbody, &datesvar)
 	if err4 != nil {
-		log.Fatalln("error unmarhsalling dates", err4)
+		log.Fatalln("error unmarshalling dates", err4)
 	}
 
-	//4. relations
-	relResp, err := http.Get("https://groupietrackers.herokuapp.com/api/relation")
-	if err != nil {
-		print("Can't get Relations URL!", err)
-	}
-	defer relResp.Body.Close()
-	relbody, err := ioutil.ReadAll(relResp.Body)
-	if err != nil {
-		print("Error copying relations json into body", err)
-	}
-
-	err5 := json.Unmarshal(relbody, &relvar)
-	if err5 != nil {
-		log.Fatalln("error unmarhsalling dates", err5)
-	}
-
+	http.Handle("/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/", http.StripPrefix("/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/", http.FileServer(http.Dir("assets"))))
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/loc", locHandler)
 	http.HandleFunc("/dates", datesHandler)
-	http.HandleFunc("/rel", relHandler)
+	// http.HandleFunc("/data", dataHandler)
 	fmt.Println("listening...")
-	http.ListenAndServe(":5000", nil)
+	http.ListenAndServe(":8080", nil)
 
 }
 
@@ -151,15 +131,6 @@ func datesHandler(writer http.ResponseWriter, request *http.Request) {
 	err := tpl.ExecuteTemplate(writer, "dates.html", datesvar)
 	if err != nil {
 		log.Fatalln("Dates Handler Error!", err)
-	}
-
-}
-
-func relHandler(writer http.ResponseWriter, request *http.Request) {
-	fmt.Println("Relations handler running")
-	err := tpl.ExecuteTemplate(writer, "rel.html", relvar)
-	if err != nil {
-		log.Fatalln("Relations Handler Error!", err)
 	}
 
 }

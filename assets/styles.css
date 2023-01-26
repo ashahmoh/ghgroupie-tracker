@@ -1,0 +1,79 @@
+h1 {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 100px;
+    background-color: rgba(9, 28, 28, 0.3);
+    color:  rgba(255, 255, 255, 0.5);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+h3 {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+  }
+
+  p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center
+  }
+
+
+
+.ind-name{
+    text-align: center;
+}
+
+.indexcard{
+  display: grid;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.container {
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+
+body {
+    background-image: url("groupiesmall.jpg");
+}
+
+a {
+    color: #483538;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .loc-title{
+    text-align: center;
+    background: rgba(86, 0, 7, 0.5);
+
+  }
+
+  .loc-main {
+    background: rgba(86, 0, 7, 0.5);
+    text-align: center;
+  }
+  a:visited {
+    color: #483538;
+  }
+
+  a:hover {
+    color: #77040d;
+  }
+
+  a:active {
+    color: #77040d;
+  }

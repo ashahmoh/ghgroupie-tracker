@@ -8,20 +8,13 @@
     </head>
     <body>
         <main>
-            <div class="loc-title">
-            <h1>SHOWS</h1>
+            <h1>SHOWS BY GROUP</h1>
                 <br>
-        </div>
-        <div class="loc-main">
-            {{range $index, $value := .Index}}
-            <h2>  Location : </h2>
-           <p> {{range $key, $val := .Locations}} {{.}}<br> <p><a href="/dates">Dates</a></p> {{end}}<br> </p>
+            {{range $index, $value := .artist}}
+            <h2> Name {{.Name}} </h2>
             {{end}}
             <br>
             <br>
-        </div>
-        
-      
     </main>
     </body>
 </html>
