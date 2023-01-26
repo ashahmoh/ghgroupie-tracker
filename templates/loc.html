@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- <link rel="stylesheet" href="/Users/ashamohamed/Documents/groupietracker/assets/styles.css" /> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>SHOW LOCATIONS</title>
+    </head>
+    <body>
+        <main>
+            <h1>SHOWS</h1>
+                <br>
+        {{range $index, $value := .Index}}
+        <h2>  Location : </h2>
+       <p> {{range $key, $val := .Locations}} {{.}}<br> <p><a href="/dates">Dates</a></p> {{end}}<br> </p>
+        {{end}}
+        <br>
+        <br>
+    </main>
+    </body>
+</html>
