@@ -10,9 +10,12 @@
             <main>
                 <h1>The Dates</h1>
                 {{range $index, $value := .Index}}
-                <p>Dates: {{range .Dates}} {{.}} {{end}}</p>
-                <p><a href="/loc">Location</a></p>
-        {{end}}
+                <div class="dates-container">
+                    <p class="dates">Dates: {{range .Dates}} {{.}} {{end}}</p>
+                    <p class="dates"><a href="/loc">Location</a></p>
+            {{end}}
+                </div>
+        
             </main>
             <p><a href="/index">home</a></p>
             <p><a href="/loc">back</a></p>

@@ -19,7 +19,6 @@ type artist []struct {
 	Locations    string   `json:"locations"`
 	ConcertDates string   `json:"concertDates"`
 	Relations    string   `json:"relations"`
-	Index        date
 }
 
 type location struct {
@@ -43,7 +42,6 @@ var artists artist
 var loc location
 var datesvar date
 
-// var alldatavar alldata
 var tpl *template.Template
 
 func init() {
@@ -104,9 +102,9 @@ func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/loc", locHandler)
 	http.HandleFunc("/dates", datesHandler)
-	// http.HandleFunc("/data", dataHandler)
+	http.HandleFunc("/locart", locArtHandler)
 	fmt.Println("listening...")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8100", nil)
 
 }
 
@@ -134,3 +132,27 @@ func datesHandler(writer http.ResponseWriter, request *http.Request) {
 	}
 
 }
+
+func locArtHandler(writer http.ResponseWriter, request *http.Request) {
+	fmt.Println("Locart handler running")
+	err := tpl.ExecuteTemplate(writer, "locart.html", artists)
+	if err != nil {
+		log.Fatalln("Dates Handler Error!", err)
+	}
+
+}
+
+// func GetDates(url string) []string {
+// 	var dates artist
+// 	resp, err := http.Get(url)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	defer resp.Body.Close()
+
+// 	err = json.NewDecoder(resp.Body).Decode(&dates)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	return
+// }

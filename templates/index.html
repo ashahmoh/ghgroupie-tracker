@@ -5,32 +5,35 @@
         <link rel="stylesheet" href="/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/styles.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>INDEX</title>
+        <style>
+            img {padding: 30px;}
+        </style>
     </head>
     <body>
-        <!-- <link rel="stylesheet" href="/Users/ashamohamed/Documents/groupietracker/stylesheet/styles.css" /> -->
         <main>
-            <h1>GROUPIE TRACKER</h1>
+            <h1 class="title">GROUPIE TRACKER</h1>
                     {{range .}}
-                <div class="indexcard">
-                    <section>
-                    <img src="{{.Image}}" alt="Image of Artists"> 
-                    <h3 class="ind-name">{{.Name}}</h3>
-                    </section>
-                    <section>
-                        <p>MEMBERS: {{range .Members}}</p>
-                        <ul>{{.}}</ul>{{end}}
-                        <p>CREATION DATE: {{.CreationDate}}</p>
-                        <p>FIRST ALBUM: {{.FirstAlbum}}</p>
-                        <a href="/loc">SHOW LOCATIONS</a><br>
-                        <br>
-                     {{end}}
-                     <br>
-                     <br>
-                    </section>
-                </div>
-               
-                 
-             <p><a href="/index">home</a></p>
+                    <ul>
+                        <div class="indexrow">
+                            <img src="{{.Image}}" alt="Image of Artists">
+                            <div class="artinfo">
+                                <h1 class="ind-h3">{{.Name}}<br>
+                                    </h1>
+                                <p class="index-p">MEMBERS: {{range .Members}}</p>
+                                    <ul>
+                                    <p>
+                                     {{.}}
+                                     </p>
+                                     </ul>{{end}}
+                                <p class="index-p">CREATION DATE: {{.CreationDate}}</p>
+                                <p class="index-p">FIRST ALBUM: {{.FirstAlbum}}</p>
+                                <p class="index-p"><a href="{{.Locations}}">Location</a></p>
+                                <p class="index-p"><a href="{{.ConcertDates}}">Dates</a></p>
+                               
+                            </div>
+                        </div>
+                    </ul>
+                    {{end}}
         </main>
     </body>
 </html>
