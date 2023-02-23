@@ -71,23 +71,17 @@ func searchHandler(writer http.ResponseWriter, request *http.Request) {
 	lower := strings.ToLower(artistName)
 	for i, artist := range artists {
 		artistlower := strings.ToLower(artist.Name)
-		if artistlower == lower {
-			tpl.ExecuteTemplate(writer, "artist.html", artists[i])
-			return
+		for _, v := range artist.Members {
+			var mem []string
+			mem = append(mem, v)
+			strMem := strings.Join(mem, "")
+			strMemLow := strings.ToLower(strMem)
+			if artistlower == lower || strMemLow == lower {
+				tpl.ExecuteTemplate(writer, "artist.html", artists[i])
+				return
 
-		} else {
-			for _, v := range artist.Members {
-				var mem []string
-				mem = append(mem, v)
-				strMem := strings.Join(mem, "")
-				strMemLow := strings.ToLower(strMem)
-				if strMemLow == lower {
-					tpl.ExecuteTemplate(writer, "artist.html", artists[i])
-					return
-				}
 			}
 		}
-
 	}
 
 	http.Error(writer, "500 Internal Server Error", 500)
