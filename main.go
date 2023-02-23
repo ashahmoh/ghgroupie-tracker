@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 	"text/template"
 )
@@ -76,7 +77,10 @@ func searchHandler(writer http.ResponseWriter, request *http.Request) {
 			mem = append(mem, v)
 			strMem := strings.Join(mem, "")
 			strMemLow := strings.ToLower(strMem)
-			if artistlower == lower || strMemLow == lower {
+			creaDate := artist.CreationDate
+			conDate := artist.FirstAlbum
+			loc := artist.Locations
+			if artistlower == lower || strMemLow == lower || strconv.Itoa(creaDate) == lower || conDate == lower || loc == lower {
 				tpl.ExecuteTemplate(writer, "artist.html", artists[i])
 				return
 
