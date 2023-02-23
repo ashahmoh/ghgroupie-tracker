@@ -75,12 +75,11 @@ func searchHandler(writer http.ResponseWriter, request *http.Request) {
 		for _, v := range artist.Members {
 			var mem []string
 			mem = append(mem, v)
-			strMem := strings.Join(mem, "")
+			strMem := strings.Join(mem, ", ")
 			strMemLow := strings.ToLower(strMem)
 			creaDate := artist.CreationDate
 			conDate := artist.FirstAlbum
-			loc := artist.Locations
-			if artistlower == lower || strMemLow == lower || strconv.Itoa(creaDate) == lower || conDate == lower || loc == lower {
+			if artistlower == lower || strMemLow == lower || strconv.Itoa(creaDate) == lower || conDate == lower {
 				tpl.ExecuteTemplate(writer, "artist.html", artists[i])
 				return
 
