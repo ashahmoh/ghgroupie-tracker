@@ -4,14 +4,26 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/styles.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>INDEX</title>
+        <title>Groupie Tracker</title>
         <style>
             img {padding: 30px;}
         </style>
     </head>
     <body>
         <main>
-            <h1 class="title">GROUPIE TRACKER</h1>
+            <div id="search-container"> 
+                <form action="/search" method="post">
+                <input list="artists" type="text" name="artist" id="search">
+                <datalist id="artists">
+                  {{range .}}  
+                  <h1>Artist/Band</h1><option value="{{.Name}}">
+                 <!-- <h1>Members</h1><option value="{{.Members}}"></option> -->
+                  {{end}}
+                </datalist>
+                <input type="submit" id="search-button" value="search">
+                </form>
+                </div>
+            <h1 class="title">Welcome to Groupie Tracker</h1>
                     {{range .}}
                     <ul>
                         <div class="indexrow">
@@ -29,6 +41,8 @@
                                 <p class="index-p">FIRST ALBUM: {{.FirstAlbum}}</p>
                                 <p class="index-p"><a href="{{.Locations}}">Location</a></p>
                                 <p class="index-p"><a href="{{.ConcertDates}}">Dates</a></p>
+                                <p class="index-p"><a href="{{.Relations}}">Relations</a></p>
+                               
                                
                             </div>
                         </div>

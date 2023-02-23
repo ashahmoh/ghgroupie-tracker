@@ -1,8 +1,8 @@
-.title, .loc-title {
+.title {
     text-align: center;
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 100px;
-    background-color: rgba(9, 28, 28, 0.5);
+    text-shadow: 2px 2px #0b0606;
     color:  rgba(255, 255, 255, 0.5);
     margin-left: 10%;
     margin-right: 10%;
@@ -14,17 +14,18 @@
   } 
 
   .indexrow {
-  background-color: rgba(9, 28, 28, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 90px;
-
+ 
 }
 
 .artinfo {
   color:rgba(255, 255, 255, 0.5);
   background-color: rgba(9, 28, 28, 0.5);
   border-radius: 5px 5px 0 0;
+  text-align: center;
 }
 
 .ind-h1{
@@ -34,43 +35,23 @@
   font-family: 'Courier New', monospace;
 }
 
-.loc-h3 {
-  font-family: 'Noto Sans JP', sans-serif;
-  padding: auto;
-  color: rgba(255, 255, 255, 0.5)
-
-}
-
-.loc-h2 {
-  font-family: 'Noto Sans JP', sans-serif;
-  padding: auto;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(9, 28, 28, 0.5);
-}
-
-.loc-main {
-  background-color: rgba(255, 255, 255, 0.5);
-}
 
 img {
   border-radius: 5px 5px 0 0;
+  display: block;
+    max-width:230px;
+    max-height:95px;
+    width: auto;
+    height: auto;
   background-color: rgba(255, 255, 255, 0.5);
-}
-.loc-container {
-background-color: rgba(255, 255, 255, 0.5);
-}
-
-.dates-container {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.dates {
-  color: rgba(9, 28, 28, 0.5);
 }
 
 
 body {
     background-image: url("groupiesmall.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 a {
@@ -90,3 +71,21 @@ a {
   a:active {
     color: #77040d;
   }
+
+  #search-container {
+    width: 100%;
+    text-align:center;   
+  } 
+
+  #search{
+    width: 30%;
+    height: 30px;
+    border-radius: 4px;
+    vertical-align: middle;
+  }
+
+  #search-button{
+    height: 30px;
+    vertical-align: middle;
+    margin-left: 4px;
+  } 

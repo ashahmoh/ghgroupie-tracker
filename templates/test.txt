@@ -1,0 +1,11 @@
+ <div id="search-container"> 
+                <form action="/search" method="get">
+                <input list="artists" name="artist" id="search">
+                <datalist id="artists">
+                  {{range .}}  
+                      <option value="{{.Name}}">      
+                  {{end}}
+                </datalist>
+                <button type="submit"></button>
+                </form>
+                </div>

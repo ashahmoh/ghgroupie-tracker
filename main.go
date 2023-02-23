@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 	"text/template"
 )
 
@@ -48,14 +49,58 @@ func main() {
 
 	http.Handle("/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/", http.StripPrefix("/Users/ashamohamed/Documents/GitHub/ghgroupie-tracker/assets/", http.FileServer(http.Dir("assets"))))
 	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/search", searchHandler)
+	http.HandleFunc("/404", Err404)
+	http.HandleFunc("/400", Err400)
+	http.HandleFunc("/500", Err500)
 	fmt.Println("listening...")
-	http.ListenAndServe(":8100", nil)
+	http.ListenAndServe(":8080", nil)
 }
 
 func indexHandler(writer http.ResponseWriter, request *http.Request) {
 	fmt.Println("index handler running")
-	err := tpl.ExecuteTemplate(writer, "index.html", artists)
-	if err != nil {
-		log.Fatalln("Index Handler Error!", err)
+	if request.URL.Path != "/" {
+		tpl.ExecuteTemplate(writer, "404.html", nil)
+		return
 	}
+	tpl.ExecuteTemplate(writer, "index.html", artists)
+}
+
+func searchHandler(writer http.ResponseWriter, request *http.Request) {
+	artistName := request.FormValue("artist")
+	lower := strings.ToLower(artistName)
+	for i, artist := range artists {
+		artistlower := strings.ToLower(artist.Name)
+		if artistlower == lower {
+			tpl.ExecuteTemplate(writer, "artist.html", artists[i])
+			return
+
+		} else {
+			for _, v := range artist.Members {
+				var mem []string
+				mem = append(mem, v)
+				strMem := strings.Join(mem, "")
+				strMemLow := strings.ToLower(strMem)
+				if strMemLow == lower {
+					tpl.ExecuteTemplate(writer, "artist.html", artists[i])
+					return
+				}
+			}
+		}
+
+	}
+
+	http.Error(writer, "500 Internal Server Error", 500)
+}
+
+func Err404(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "404.html", nil)
+}
+
+func Err500(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "500.html", nil)
+}
+
+func Err400(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "400.html", nil)
 }

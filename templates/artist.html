@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="indexrow">
+        <img src="{{.Image}}" alt="Image of Artists">
+        <div class="artinfo">
+            <h1 class="ind-h3">{{.Name}}<br>
+                </h1>
+            <p class="index-p">MEMBERS: {{range .Members}}</p>
+                <ul>
+                <p>
+                 {{.}}
+                 </p>
+                 </ul>{{end}}
+            <p class="index-p">CREATION DATE: {{.CreationDate}}</p>
+            <p class="index-p">FIRST ALBUM: {{.FirstAlbum}}</p>
+            <p class="index-p"><a href="{{.Locations}}">Location</a></p>
+            <p class="index-p"><a href="{{.ConcertDates}}">Dates</a></p>
+            <p class="index-p"><a href="{{.Relations}}">Relations</a></p>
+           
+           
+        </div>
+    </div>
+</body>
+</html>
