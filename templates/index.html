@@ -16,7 +16,13 @@
                 <input list="artists" type="text" name="artist" id="search">
                 <datalist id="artists">
                   {{range .}}  
-                  <h1>Artist/Band</h1><option value="{{.Name}}">
+                  <option value="{{.Name}}">Artist/Band</option>
+                <option value="{{.FirstAlbum}}"><h1>{{.Name}}: First Album </h1></option>
+                <option value="{{.CreationDate}}"><h1>Creation Date: {{.Name}}</h1></option>
+                {{range .Members}}
+                <option value="{{.}}"><h1>Member</h1></option>
+                {{end}}
+                <option value="{{range .Members}} {{.}} {{end}}">{{.Name}}</option>
                   {{end}}
                   </datalist>
                 <input type="submit" id="search-button" value="search">
