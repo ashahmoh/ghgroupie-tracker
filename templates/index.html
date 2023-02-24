@@ -18,7 +18,7 @@
                   {{range .}}  
                   <option value="{{.Name}}">Artist/Band</option>
                 <option value="{{.FirstAlbum}}"><h1>{{.Name}}: First Album </h1></option>
-                <option value="{{.CreationDate}}"><h1>Creation Date: {{.Name}}</h1></option>
+                <option value="{{.Name}}"><h1>Creation Date: {{.CreationDate}}</h1></option>
                 {{range .Members}}
                 <option value="{{.}}"><h1>Member</h1></option>
                 {{end}}
